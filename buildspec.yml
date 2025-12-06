@@ -18,7 +18,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build -t $REPOSITORY_NAME:$IMAGE_TAG .
+      - docker build -t $website:$latest .
       - docker tag docker tag $website:latest $096966629125.dkr.ecr.ap-south-1.amazonaws.com/website:$latest
   post_build:
     commands:
@@ -26,6 +26,6 @@ phases:
       - echo Pushing the Docker image...
       - docker push docker push $096966629125.dkr.ecr.ap-south-1.amazonaws.com/website:latest
       - echo Writing image definitions file...
-      - printf '[{"name":"%s","imageUri":"%s"}]' $CONTAINER_NAME $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+      - printf '[{"name":"%s","imageUri":"%s"}]' $webaitecluster $096966629125.dkr.ecr.ap-south-1.amazonaws.com/website:$latest > imagedefinitions.json
 artifacts:
   files: imagedefinitions.json
