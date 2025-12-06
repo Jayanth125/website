@@ -18,8 +18,8 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build -t $website:$latest .
-      - docker tag website:latest 096966629125.dkr.ecr.ap-south-1.amazonaws.com/website:latest
+      - docker build -t $REPOSITORY_NAME:$IMAGE_TAG .
+      - docker tag $REPOSITORY_NAME:$IMAGE_TAG
   post_build:
     commands:
       - echo Build completed on `date`
